@@ -21,17 +21,15 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m Hamish, currently I live in Sydney working as a senior product designer at{' '}
-      <Link href="https://www.qwilr.com">Qwilr</Link>. My projects include UX design, UI
-      animations, and icon illustration. Being comfortable with code allows me to rapidly
-      prototype and validate experiences. If you’re interested in the tools and software I
-      use check out my <Link href="/uses">uses page</Link>.
-    </Text>
-    <Text className={styles.description} data-visible={visible} size="l" as="p">
-      In my spare time I like to practice Brazilian Jiu Jitsu, play video games, and{' '}
-      <Link href="/projects/volkihar-knight">make mods</Link>. I’m always down for hearing
-      about new projects, so feel free to drop me a line.
-    </Text>
+  I’m Vedant, an aspiring entrepreneur currently pursuing a degree in Computer Science and Financial Technology.  
+  I’m the CEO & Founder of <Link href="https://vorapay.vercel.app">Vora</Link>, President at <Link href="https://finova.framer.ai">Finova</Link>, and an AI researcher at <Link href="https://www.robomanipal.com">RoboManipal</Link>.  
+  My work focuses on AI and FinTech—building innovative solutions that enhance financial decision-making and AI-driven technologies.  
+  If you’re curious about my projects, check out my <Link href="/#projects-1">projects page</Link>.
+</Text>
+<Text className={styles.description} data-visible={visible} size="l" as="p">
+  Outside of work, I enjoy composing music, working out at the gym, and going for treks.  
+  I’m always open to discussing new opportunities, so feel free to reach out.
+</Text>
   </Fragment>
 );
 
@@ -86,7 +84,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   width={960}
                   height={1280}
                   sizes={`(max-width: ${media.mobile}px) 100vw, 480px`}
-                  alt="Me smiling like a goofball at the Qwilr office in Sydney"
+                  alt="Me presenting my research paper at an international conference"
                 />
                 <svg className={styles.svg} data-visible={visible} viewBox="0 0 136 766">
                   <use href={`${katakana}#katakana-profile`} />
