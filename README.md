@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="/public/favicon.svg" width="50" alt="Logo" />
-</p>
+
 <h1 align="center">Vedant's Portfolio</h1>
 
 [![Site preview](/public/site-preview.png)](https://vedant01.github.io/portfolio_website)
@@ -72,7 +70,7 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
 ## 📞 Contact
 
 - **Website**: [vedant01.github.io/portfolio_website](https://vedant01.github.io/portfolio_website)
-- **LinkedIn**: [Your LinkedIn Profile]
+- **LinkedIn**: [linkedin.com/in/vedant-agarwal312/](linkedin.com/in/vedant-agarwal312/)
 - **GitHub**: [github.com/Vedant01](https://github.com/Vedant01)
 
 ## 🙏 Acknowledgments
