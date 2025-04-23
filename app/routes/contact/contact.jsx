@@ -25,6 +25,33 @@ export const meta = () => {
   });
 };
 
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const message = formData.get('message');
+
+  try {
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      message: `From: ${email}\n\n${message}`,
+    };
+
+    await emailjs.send(
+      'service_3cqfs13',
+      'template_v4jikai',
+      templateParams,
+      '_Ya88Lmr8EK5VfPFm'
+    );
+
+    return { success: true };
+  } catch (error) {
+    console.error('EmailJS Error:', error);
+    return { success: false, error: 'Failed to send message. Try again later.' };
+  }
+};
+
 const MAX_NAME_LENGTH = 100;
 const MAX_EMAIL_LENGTH = 512;
 const MAX_MESSAGE_LENGTH = 4096;
