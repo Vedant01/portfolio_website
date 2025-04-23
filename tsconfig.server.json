@@ -8,4 +8,4 @@
     "outDir": "build"
   },
   "include": ["app/entry.server.tsx", "app/root.tsx"]
-} 
+}
