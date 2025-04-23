@@ -5,6 +5,7 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
+    "jsxImportSource": "react",
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "noEmit": true,
@@ -16,5 +17,10 @@
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 } 
