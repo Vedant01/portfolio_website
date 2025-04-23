@@ -1,4 +1,4 @@
-import emailjs from '@emailjs/browser';
+import emailjs from 'emailjs-com';
 import { Button } from '~/components/button';
 import { DecoderText } from '~/components/decoder-text';
 import { Divider } from '~/components/divider';
@@ -14,13 +14,8 @@ import { useFormInput } from '~/hooks';
 import { useRef, useState } from 'react';
 import { cssProps, msToNum, numToMs } from '~/utils/style';
 import { baseMeta } from '~/utils/meta';
-import { Form } from '@remix-run/react';
+import { Form, useActionData, useNavigation } from '@remix-run/react';
 import styles from './contact.module.css';
-
-// Initialize EmailJS with environment variable
-if (typeof window !== 'undefined') {
-  emailjs.init(process.env.EMAILJS_PUBLIC_KEY);
-}
 
 export const meta = () => {
   return baseMeta({
@@ -36,11 +31,6 @@ export const action = async ({ request }) => {
   const email = formData.get('email');
   const message = formData.get('message');
 
-  if (!process.env.EMAILJS_SERVICE_ID || !process.env.EMAILJS_TEMPLATE_ID || !process.env.EMAILJS_PUBLIC_KEY) {
-    console.error('EmailJS environment variables are not properly configured');
-    return { success: false, error: 'Email service is not properly configured. Please try again later.' };
-  }
-
   try {
     const templateParams = {
       from_name: name,
@@ -49,10 +39,10 @@ export const action = async ({ request }) => {
     };
 
     await emailjs.send(
-      process.env.EMAILJS_SERVICE_ID,
-      process.env.EMAILJS_TEMPLATE_ID,
+      'service_3cqfs13',
+      'template_v4jikai',
       templateParams,
-      process.env.EMAILJS_PUBLIC_KEY
+      '_Ya88Lmr8EK5VfPFm'
     );
 
     return { success: true };
@@ -73,76 +63,64 @@ export const Contact = () => {
   const email = useFormInput('');
   const message = useFormInput('');
   const initDelay = tokens.base.durationS;
-  const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
+  const actionData = useActionData();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSending(true);
+    setSuccess(false);
     setError(null);
 
     if (!name.value) {
       setError('Please enter your name.');
-      setSending(false);
       return;
     }
 
     if (name.value.length > MAX_NAME_LENGTH) {
       setError(`Name must be shorter than ${MAX_NAME_LENGTH} characters.`);
-      setSending(false);
       return;
     }
 
     if (!email.value || !EMAIL_PATTERN.test(email.value)) {
       setError('Please enter a valid email address.');
-      setSending(false);
       return;
     }
 
     if (!message.value) {
       setError('Please enter a message.');
-      setSending(false);
       return;
     }
 
     if (email.value.length > MAX_EMAIL_LENGTH) {
       setError(`Email address must be shorter than ${MAX_EMAIL_LENGTH} characters.`);
-      setSending(false);
       return;
     }
 
     if (message.value.length > MAX_MESSAGE_LENGTH) {
       setError(`Message must be shorter than ${MAX_MESSAGE_LENGTH} characters.`);
-      setSending(false);
       return;
     }
 
-    try {
-      const templateParams = {
-        from_name: name.value,
-        from_email: email.value,
-        message: `From: ${email.value}\n\n${message.value}`,
-      };
-
-      await emailjs.send(
-        process.env.EMAILJS_SERVICE_ID,
-        process.env.EMAILJS_TEMPLATE_ID,
-        templateParams,
-        process.env.EMAILJS_PUBLIC_KEY
-      );
-
-      setSuccess(true);
-      name.onChange({ target: { value: '' } });
-      email.onChange({ target: { value: '' } });
-      message.onChange({ target: { value: '' } });
-    } catch (error) {
-      console.error('EmailJS Error:', error);
-      setError('Failed to send message. Try again later.');
-    } finally {
-      setSending(false);
-    }
+    // Let the form submit normally
+    e.target.submit();
   };
+
+  // Handle action response
+  React.useEffect(() => {
+    if (actionData) {
+      if (actionData.success) {
+        setSuccess(true);
+        name.onChange({ target: { value: '' } });
+        email.onChange({ target: { value: '' } });
+        message.onChange({ target: { value: '' } });
+      } else {
+        setError(actionData.error);
+      }
+    }
+  }, [actionData]);
 
   return (
     <Section className={styles.contact}>
@@ -153,6 +131,7 @@ export const Contact = () => {
             className={styles.form}
             onSubmit={handleSubmit}
             ref={nodeRef}
+            method="post"
           >
             <Heading
               className={styles.title}
@@ -213,10 +192,10 @@ export const Contact = () => {
             <Button
               className={styles.button}
               data-status={status}
-              data-sending={sending}
+              data-sending={isSubmitting}
               style={getDelay(tokens.base.durationM, initDelay)}
-              disabled={sending}
-              loading={sending}
+              disabled={isSubmitting}
+              loading={isSubmitting}
               loadingText="Sending..."
               icon="send"
               type="submit"
