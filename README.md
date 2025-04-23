@@ -1,45 +1,85 @@
 <p align="center">
   <img src="/public/favicon.svg" width="50" alt="Logo" />
 </p>
-<h1 align="center">Personal portfolio</h1>
+<h1 align="center">Vedant's Portfolio</h1>
 
-[![Site preview](/public/site-preview.png)](https://hamishw.com)
+[![Site preview](/public/site-preview.png)](https://vedant01.github.io/portfolio_website)
 
-My design portfolio to showcase a few projects. Built with [Remix](https://remix.run/), [Three.js](https://threejs.org/), and [Framer Motion](https://www.framer.com/motion/). View the [live site](https://hamishw.com) or check out a live version of the [components storybook](https://storybook.hamishw.com).
+A modern portfolio website showcasing my work in fintech, AI, and business strategy. Built with [Remix](https://remix.run/), [Three.js](https://threejs.org/), and [Framer Motion](https://www.framer.com/motion/).
 
-## Install & run
+## 🚀 Features
 
-Make sure you have nodejs `19.9.0` or higher and npm `9.6.3` or higher installed. Install dependencies with:
+- **Modern Tech Stack**: Built with Remix, Three.js, and Framer Motion
+- **Responsive Design**: Optimized for all devices
+- **Interactive UI**: Smooth animations and transitions
+- **Project Showcase**: Highlighting key projects in fintech and AI
+- **Terminal Interface**: Unique terminal-style navigation
+- **AI Integration**: Built with assistance from AI tools like Cursor, ChatGPT, and Perplexity
 
+## 🛠️ Tech Stack
+
+- **Frontend**: React, Remix, Three.js, Framer Motion
+- **Styling**: CSS Modules, PostCSS
+- **Deployment**: Cloudflare Pages
+- **Development**: VS Code, Git, Figma
+- **AI Tools**: Cursor, ChatGPT, Perplexity, Krea
+
+## 📦 Installation & Setup
+
+Make sure you have Node.js `19.9.0` or higher and npm `9.6.3` or higher installed.
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Vedant01/portfolio_website.git
+cd portfolio_website
+```
+
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-Once it's done start up a local server with:
-
+3. Start the development server:
 ```bash
 npm run dev
 ```
 
-To view the components storybook:
-
+4. View the components storybook:
 ```bash
 npm run dev:storybook
 ```
 
-## Deployment
+## 🚀 Deployment
 
-I've set up the site using Cloudflare for hosting. Deploy the site to Cloudflare Pages:
+The site is deployed using Cloudflare Pages. To deploy:
 
 ```bash
 npm run deploy
 ```
 
-## Permissions
+## 📝 License
 
-I'm cool with anyone using the code or parts of the code for their own site, it is open source so people can learn from it and adapt it. However, I would encourage you to modify the theme and components it to make it your own. If you are using the site's design largely unmodified, I'd appreciate being credited as the designer of the website.
+This project is open source and available under the MIT License. Feel free to use the code as a reference or starting point for your own portfolio. However, please:
 
-I do not give permission to present any of my projects as your own (this is being actively used as my portfolio site and these are my real projects I've worked on).
+- Modify the design and components to make it your own
+- Don't present my projects as your own
+- Consider crediting the original design if you use it largely unmodified
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+## 📞 Contact
+
+- **Website**: [vedant01.github.io/portfolio_website](https://vedant01.github.io/portfolio_website)
+- **LinkedIn**: [Your LinkedIn Profile]
+- **GitHub**: [github.com/Vedant01](https://github.com/Vedant01)
+
+## 🙏 Acknowledgments
+
+- Original design inspiration from [Hamish Williams](https://hamishw.com)
+- AI tools that helped in development: Cursor, ChatGPT, Perplexity, Krea
+- Open source community for their amazing tools and libraries
 
 ## FAQs
 
