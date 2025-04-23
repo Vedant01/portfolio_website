@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  },
+  "include": ["app/entry.server.tsx"]
+} 
