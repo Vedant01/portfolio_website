@@ -31,6 +31,12 @@ export const meta = () => {
 };
 
 export const action = async ({ request }) => {
+  // Temporarily disabled backend functionality
+  console.log('Contact form submission received (backend disabled)');
+  return { success: true };
+  
+  // Original code commented out for now
+  /*
   const formData = await request.formData();
   const name = formData.get('name');
   const email = formData.get('email');
@@ -60,6 +66,7 @@ export const action = async ({ request }) => {
     console.error('EmailJS Error:', error);
     return { success: false, error: 'Failed to send message. Try again later.' };
   }
+  */
 };
 
 const MAX_NAME_LENGTH = 100;
