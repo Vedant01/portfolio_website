@@ -1,4 +1,4 @@
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import { Button } from '~/components/button';
 import { DecoderText } from '~/components/decoder-text';
 import { Divider } from '~/components/divider';
@@ -17,6 +17,11 @@ import { baseMeta } from '~/utils/meta';
 import { Form } from '@remix-run/react';
 import styles from './contact.module.css';
 
+// Initialize EmailJS
+if (typeof window !== 'undefined') {
+  emailjs.init(process.env.EMAILJS_PUBLIC_KEY);
+}
+
 export const meta = () => {
   return baseMeta({
     title: 'Contact',
@@ -30,6 +35,11 @@ export const action = async ({ request }) => {
   const name = formData.get('name');
   const email = formData.get('email');
   const message = formData.get('message');
+
+  if (!process.env.EMAILJS_SERVICE_ID || !process.env.EMAILJS_TEMPLATE_ID || !process.env.EMAILJS_PUBLIC_KEY) {
+    console.error('EmailJS environment variables are not properly configured');
+    return { success: false, error: 'Email service is not properly configured. Please try again later.' };
+  }
 
   try {
     const templateParams = {
