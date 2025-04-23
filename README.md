@@ -75,20 +75,8 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
 
 ## 🙏 Acknowledgments
 
-- Original design inspiration from [Hamish Williams](https://hamishw.com)
 - AI tools that helped in development: Cursor, ChatGPT, Perplexity, Krea
 - Open source community for their amazing tools and libraries
+- Original design inspiration from Hamish Williams
 
-## FAQs
 
-<details>
-  <summary>How do I change the color on the <code>DisplacementSphere</code> (blobby rotating thing in the background).</summary>
-  
-  You'll need to edit the fragment shader. [Check out this issue for more details](https://github.com/HamishMW/portfolio/issues/19#issuecomment-870996615).
-</details>
-
-<details>
-  <summary>How do I get the contact form to work?</summary>
-  
-  To get the contact form working create an AWS account and set up SES (Simple Email service). Then plug in your details into `.dev.vars.example` and rename it to `.dev.vars`. You'll also need to add these as enviroment variables in the Cloudflare dashboard for it to work in production. Or if you don't mind sending through gmail use [nodemailer](https://nodemailer.com/) instead.
-</details>
