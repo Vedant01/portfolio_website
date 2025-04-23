@@ -31,6 +31,10 @@ export const action = async ({ request }) => {
   const email = formData.get('email');
   const message = formData.get('message');
 
+  if (!name || !email || !message) {
+    return { success: false, error: 'All fields are required.' };
+  }
+
   try {
     const templateParams = {
       from_name: name,
@@ -38,11 +42,17 @@ export const action = async ({ request }) => {
       message: `From: ${email}\n\n${message}`,
     };
 
+    // Initialize EmailJS with your public key
+    if (typeof window === 'undefined') {
+      // Server-side
+      return { success: false, error: 'Form submission is only available on the client side.' };
+    }
+
+    await emailjs.init('_Ya88Lmr8EK5VfPFm');
     await emailjs.send(
       'service_3cqfs13',
       'template_v4jikai',
-      templateParams,
-      '_Ya88Lmr8EK5VfPFm'
+      templateParams
     );
 
     return { success: true };
@@ -68,6 +78,13 @@ export const Contact = () => {
   const actionData = useActionData();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
+
+  // Initialize EmailJS on component mount
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      emailjs.init('_Ya88Lmr8EK5VfPFm');
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -104,8 +121,27 @@ export const Contact = () => {
       return;
     }
 
-    // Let the form submit normally
-    e.target.submit();
+    try {
+      const templateParams = {
+        from_name: name.value,
+        from_email: email.value,
+        message: `From: ${email.value}\n\n${message.value}`,
+      };
+
+      await emailjs.send(
+        'service_3cqfs13',
+        'template_v4jikai',
+        templateParams
+      );
+
+      setSuccess(true);
+      name.onChange({ target: { value: '' } });
+      email.onChange({ target: { value: '' } });
+      message.onChange({ target: { value: '' } });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setError('Failed to send message. Try again later.');
+    }
   };
 
   // Handle action response
