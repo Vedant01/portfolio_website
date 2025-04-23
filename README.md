@@ -1,7 +1,7 @@
 
 <h1 align="center">Vedant's Portfolio</h1>
 
-[![Site preview](/public/site-preview.png)](https://vedant01.github.io/portfolio_website)
+
 
 A modern portfolio website showcasing my work in fintech, AI, and business strategy. Built with [Remix](https://remix.run/), [Three.js](https://threejs.org/), and [Framer Motion](https://www.framer.com/motion/).
 
