@@ -10,6 +10,7 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 import rehypeImgSize from 'rehype-img-size';
 import rehypeSlug from 'rehype-slug';
 import rehypePrism from '@mapbox/rehype-prism';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   assetsInclude: ['**/*.glb', '**/*.hdr', '**/*.glsl'],
@@ -20,6 +21,12 @@ export default defineConfig({
     port: 7777,
   },
   plugins: [
+    react({
+      jsxImportSource: 'react',
+      babel: {
+        plugins: ['@babel/plugin-transform-react-jsx']
+      }
+    }),
     mdx({
       rehypePlugins: [[rehypeImgSize, { dir: 'public' }], rehypeSlug, rehypePrism],
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],

@@ -16,11 +16,15 @@
     "strict": true,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "target": "ES2022",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false
   },
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
     }
   }
-} 
+}

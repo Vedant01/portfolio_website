@@ -3,7 +3,9 @@
   "compilerOptions": {
     "module": "CommonJS",
     "jsx": "react-jsx",
-    "jsxImportSource": "react"
+    "jsxImportSource": "react",
+    "noEmit": false,
+    "outDir": "build"
   },
-  "include": ["app/entry.server.tsx"]
-} 
+  "include": ["app/entry.server.tsx", "app/root.tsx"]
+}
