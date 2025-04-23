@@ -312,7 +312,7 @@ export const Terminal = () => {
             </div>
           ))}
           <form onSubmit={handleSubmit} className={styles.inputContainer}>
-            <span className={styles.prompt}>></span>
+            <span className={styles.prompt}>{'>'}</span>
             <input
               ref={inputRef}
               type="text"
