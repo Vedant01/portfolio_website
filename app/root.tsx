@@ -6,6 +6,8 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  isRouteErrorResponse,
+  useRouteError,
 } from "@remix-run/react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import styles from "~/styles/global.css";
@@ -25,17 +27,24 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export default function App() {
+function Document({
+  children,
+  title = "Vedant's Portfolio",
+}: {
+  children: React.ReactNode;
+  title?: string;
+}) {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>{title}</title>
         <Meta />
         <Links />
       </head>
       <body>
-        <Outlet />
+        {children}
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
@@ -44,21 +53,37 @@ export default function App() {
   );
 }
 
-export function ErrorBoundary({ error }: { error: Error }) {
+export default function App() {
   return (
-    <html>
-      <head>
-        <title>Oh no!</title>
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <div style={{ padding: "20px", textAlign: "center" }}>
-          <h1>Something went wrong</h1>
-          <p>{error.message}</p>
+    <Document>
+      <Outlet />
+    </Document>
+  );
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if (isRouteErrorResponse(error)) {
+    return (
+      <Document title={`${error.status} ${error.statusText}`}>
+        <div className="error-container">
+          <h1>
+            {error.status} {error.statusText}
+          </h1>
+          <p>{error.data}</p>
         </div>
-        <Scripts />
-      </body>
-    </html>
+      </Document>
+    );
+  }
+
+  const errorMessage = error instanceof Error ? error.message : "Unknown error";
+  return (
+    <Document title="Error!">
+      <div className="error-container">
+        <h1>App Error</h1>
+        <pre>{errorMessage}</pre>
+      </div>
+    </Document>
   );
 } 
