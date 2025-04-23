@@ -16,11 +16,8 @@
     "strict": true,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
-  },
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "target": "ES2022"
   }
-} 
+}
