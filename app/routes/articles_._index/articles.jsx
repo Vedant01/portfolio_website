@@ -134,7 +134,7 @@ function SkeletonPost({ index }) {
 }
 
 export function Articles() {
-  const { posts, featured } = useLoaderData();
+  const { featured } = useLoaderData();
   const { width } = useWindowSize();
   const singleColumnWidth = 1190;
   const isSingleColumn = width <= singleColumnWidth;
@@ -151,10 +151,7 @@ export function Articles() {
   const postList = (
     <div className={styles.list}>
       {!isSingleColumn && postsHeader}
-      {posts.map(({ slug, ...post }, index) => (
-        <ArticlesPost key={slug} slug={slug} index={index} {...post} />
-      ))}
-      {Array(2)
+      {Array(3)
         .fill()
         .map((skeleton, index) => (
           <SkeletonPost key={index} index={index} />

@@ -1,25 +1,25 @@
-__  __  __
-\ \ \ \ \/
+__  __  
+\ \/ /\
  \ \/\ \
-  \/  \/
+  \/  \ \
 
 The humans.txt file explains the team, technology,
 and graphic assets behind this site humanstxt.org.
 
 _______________________________________________________________________________
 
-DESIGNER | デザイナー
+DEVELOPER | デベロッパー
 
-Hamish Williams
-Hand crafted design & web development
+Vedant
+Full Stack Developer & Designer
 
-Design tools:
+Development tools:
+VS Code
+Git
 Figma
-Photoshop
-Blender
 
-twitter.com/hamishmw
-github.com/hamishmw
+linkedin.com/in/vedant
+github.com/vedant
 
 _______________________________________________________________________________
 

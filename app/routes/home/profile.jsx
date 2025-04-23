@@ -22,12 +22,12 @@ const ProfileText = ({ visible, titleId }) => (
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
   I’m Vedant, an aspiring entrepreneur currently pursuing a degree in Computer Science and Financial Technology.  
-  I’m the CEO & Founder of <Link href="https://vorapay.vercel.app">Vora</Link>, President at <Link href="https://finova.framer.ai">Finova</Link>, and an AI researcher at <Link href="https://www.robomanipal.com">RoboManipal</Link>.  
+  I’m the CEO & Founder of <Link href="https://Cashcached.com">CashCached</Link>, President at <Link href="https://finovamanipal.org">Finova</Link>, and an AI Researcher at <Link href="https://www.robomanipal.com">RoboManipal</Link>.  
   My work focuses on AI and FinTech—building innovative solutions that enhance financial decision-making and AI-driven technologies.  
   If you’re curious about my projects, check out my <Link href="/#projects-1">projects page</Link>.
 </Text>
 <Text className={styles.description} data-visible={visible} size="l" as="p">
-  Outside of work, I enjoy composing music, working out at the gym, and going for treks.  
+  Outside of work, I enjoy composing music, working out at the gym, and I love adventures and travelling.  
   I’m always open to discussing new opportunities, so feel free to reach out.
 </Text>
   </Fragment>

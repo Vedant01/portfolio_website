@@ -10,6 +10,14 @@ import sliceTexture from '~/assets/slice-app.jpg';
 import sprTextureLarge from '~/assets/spr-lesson-builder-dark-large.jpg';
 import sprTexturePlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
 import sprTexture from '~/assets/spr-lesson-builder-dark.jpg';
+import project1 from '~/assets/project_1.png';
+import project1Large from '~/assets/project_1_large.png';
+import project2Front from '~/assets/project_2_front.png';
+import project2FrontLarge from '~/assets/project_2_front_large.png';
+import project2Back from '~/assets/project_2_back.png';
+import project2BackLarge from '~/assets/project_2_back_large.png';
+import project3 from '~/assets/project_3.png';
+import project3Large from '~/assets/project_3_large.png';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
@@ -103,17 +111,17 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Designing the future of education"
-        description="Designing a platform to help educators build better online courseware"
-        buttonText="View project"
-        buttonLink="/projects/smart-sparrow"
+        title="Cashcached"
+        description="Building innovative fintech solutions businesses, focusing on AI-powered compliance, auditing and payments"
+        buttonText="Visit Website"
+        buttonLink="https://cashcached.com"
         model={{
           type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
+          alt: 'Cashcached fintech platform',
           textures: [
             {
-              srcSet: `${sprTexture} 1280w, ${sprTextureLarge} 2560w`,
-              placeholder: sprTexturePlaceholder,
+              srcSet: `${project1} 1280w, ${project1Large} 2560w`,
+              placeholder: project1,
             },
           ],
         }}
@@ -124,21 +132,21 @@ export const Home = () => {
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Video game progress tracking"
-        description="Design and development for a video game tracking app built in React Native"
-        buttonText="View website"
-        buttonLink="https://gamestack.hamishw.com"
+        title="Finova Manipal"
+        description="Leading the university's premier fintech & investment cell, fostering innovation, research and strategic partnerships"
+        buttonText="Learn More"
+        buttonLink="https://finovamanipal.org"
         model={{
           type: 'phone',
-          alt: 'App login screen',
+          alt: 'Finova Manipal platform',
           textures: [
             {
-              srcSet: `${gamestackTexture} 375w, ${gamestackTextureLarge} 750w`,
-              placeholder: gamestackTexturePlaceholder,
+              srcSet: `${project2Front} 375w, ${project2FrontLarge} 750w`,
+              placeholder: project2Front,
             },
             {
-              srcSet: `${gamestackTexture2} 375w, ${gamestackTexture2Large} 750w`,
-              placeholder: gamestackTexture2Placeholder,
+              srcSet: `${project2Back} 375w, ${project2BackLarge} 750w`,
+              placeholder: project2Back,
             },
           ],
         }}
@@ -148,17 +156,17 @@ export const Home = () => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="Biomedical image collaboration"
-        description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
-        buttonText="View project"
-        buttonLink="/projects/slice"
+        title="Portfolio & Projects"
+        description="Explore my journey in fintech, AI, and business strategy through various projects and initiatives"
+        buttonText="View Portfolio"
+        buttonLink="/terminal"
         model={{
           type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
+          alt: 'Portfolio showcase',
           textures: [
             {
-              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
-              placeholder: sliceTexturePlaceholder,
+              srcSet: `${project3} 800w, ${project3Large} 1920w`,
+              placeholder: project3,
             },
           ],
         }}

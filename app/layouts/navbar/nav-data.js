@@ -21,18 +21,23 @@ export const navLinks = [
 
 export const socialLinks = [
   {
-    label: 'Bluesky',
-    url: `https://bsky.app/profile/${config.bluesky}`,
-    icon: 'bluesky',
+    label: 'LinkedIn',
+    url: `https://www.linkedin.com/in/${config.linkedin}`,
+    icon: 'linkedin',
   },
   {
-    label: 'Figma',
-    url: `https://www.figma.com/${config.figma}`,
-    icon: 'figma',
+    label: 'Medium',
+    url: `https://medium.com/${config.medium}`,
+    icon: 'medium',
   },
   {
     label: 'Github',
     url: `https://github.com/${config.github}`,
     icon: 'github',
+  },
+  {
+    label: 'Resume',
+    url: 'https://docs.google.com/document/d/1DN_PlXWmavWTdhggll8npn0q7wLxeANjFWPr1x8Ffac/edit?usp=sharing',
+    icon: 'file',
   },
 ];
