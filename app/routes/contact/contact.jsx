@@ -1,4 +1,4 @@
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import { Button } from '~/components/button';
 import { DecoderText } from '~/components/decoder-text';
 import { Divider } from '~/components/divider';
@@ -17,12 +17,49 @@ import { baseMeta } from '~/utils/meta';
 import { Form } from '@remix-run/react';
 import styles from './contact.module.css';
 
+// Initialize EmailJS with environment variable
+if (typeof window !== 'undefined') {
+  emailjs.init(process.env.EMAILJS_PUBLIC_KEY);
+}
+
 export const meta = () => {
   return baseMeta({
     title: 'Contact',
     description:
       'Send me a message if you\'re interested in discussing a project or if you just want to say hi',
   });
+};
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const message = formData.get('message');
+
+  if (!process.env.EMAILJS_SERVICE_ID || !process.env.EMAILJS_TEMPLATE_ID || !process.env.EMAILJS_PUBLIC_KEY) {
+    console.error('EmailJS environment variables are not properly configured');
+    return { success: false, error: 'Email service is not properly configured. Please try again later.' };
+  }
+
+  try {
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      message: `From: ${email}\n\n${message}`,
+    };
+
+    await emailjs.send(
+      process.env.EMAILJS_SERVICE_ID,
+      process.env.EMAILJS_TEMPLATE_ID,
+      templateParams,
+      process.env.EMAILJS_PUBLIC_KEY
+    );
+
+    return { success: true };
+  } catch (error) {
+    console.error('EmailJS Error:', error);
+    return { success: false, error: 'Failed to send message. Try again later.' };
+  }
 };
 
 const MAX_NAME_LENGTH = 100;
@@ -89,10 +126,10 @@ export const Contact = () => {
       };
 
       await emailjs.send(
-        'service_3cqfs13',
-        'template_v4jikai',
+        process.env.EMAILJS_SERVICE_ID,
+        process.env.EMAILJS_TEMPLATE_ID,
         templateParams,
-        '_Ya88Lmr8EK5VfPFm'
+        process.env.EMAILJS_PUBLIC_KEY
       );
 
       setSuccess(true);
