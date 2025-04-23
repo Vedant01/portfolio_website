@@ -1,7 +1,9 @@
 import React from "react";
 import type { EntryContext } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
-import { renderToString } from "react-dom/server";
+import { renderToPipeableStream } from "react-dom/server";
+import { PassThrough } from "stream";
+import { Readable } from "stream";
 
 export default function handleRequest(
   request: Request,
@@ -9,17 +11,36 @@ export default function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
-  const markup = renderToString(
-    React.createElement(RemixServer, {
-      context: remixContext,
-      url: request.url
-    })
-  );
+  return new Promise((resolve, reject) => {
+    const { pipe, abort } = renderToPipeableStream(
+      React.createElement(RemixServer, {
+        context: remixContext,
+        url: request.url
+      }),
+      {
+        onShellReady() {
+          responseHeaders.set("Content-Type", "text/html");
+          
+          const body = new PassThrough();
+          pipe(body);
+          
+          resolve(
+            new Response(body as unknown as ReadableStream, {
+              status: responseStatusCode,
+              headers: responseHeaders,
+            })
+          );
+        },
+        onShellError(err) {
+          reject(err);
+        },
+        onError(error) {
+          console.error(error);
+          reject(error);
+        },
+      }
+    );
 
-  responseHeaders.set("Content-Type", "text/html");
-
-  return new Response("<!DOCTYPE html>" + markup, {
-    status: responseStatusCode,
-    headers: responseHeaders,
+    setTimeout(abort, 5000);
   });
 } 
